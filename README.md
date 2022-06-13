@@ -40,9 +40,10 @@ In your opinion, even without knowing anything about the Blockchain or coding, w
 ## Chapter 2 - Day 2
 
 1. Explain why we wouldn't call changeGreeting in a script.
-    - A changeGreeting function literally changes the greeting text in the contract.  Anything that modifies a contract is a transaction.  Script only view data in the transaction
+    - The changeGreeting function literally changes data in the greeting string in the contract.  Anything that modifies data on the blockchain is a transaction.  Scripts only view data on the blockchain.
 
 2. What does the AuthAccount mean in the prepare phase of the transaction?
+    - AuthAccount is what is used to access data in the signer's account in order to approve a transaction.
 
 3. What is the difference between the prepare phase and the execute phase in the transaction?
     - In the prepare phase, we have access to the data in the account.  In the execute phase we do not. The execute phase is where we change data on the blockchain.
