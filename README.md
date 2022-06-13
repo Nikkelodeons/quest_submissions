@@ -36,3 +36,30 @@ In your opinion, even without knowing anything about the Blockchain or coding, w
 2. Check that your variable is actually equals "the best" by executing a script to read that variable. Include a screenshot of the output.
 ![image](https://user-images.githubusercontent.com/22729328/172503850-77036141-28c9-4ff6-91f7-52d7a46b94dc.png)
 
+
+## Chapter 2 - Day 2
+
+1. Explain why we wouldn't call changeGreeting in a script.
+    - A changeGreeting function literally changes the greeting text in the contract.  Anything that modifies a contract is a transaction.  Script only view data in the transaction
+
+2. What does the AuthAccount mean in the prepare phase of the transaction?
+
+3. What is the difference between the prepare phase and the execute phase in the transaction?
+    - In the prepare phase, we have access to the data in the account.  In the execute phase we do not. The execute phase is where we change data on the blockchain.
+
+4. This is the hardest quest so far, so if it takes you some time, do not worry! I can help you in the Discord if you have questions.
+Add two new things inside your contract:
+
+A variable named myNumber that has type Int (set it to 0 when the contract is deployed)
+A function named updateMyNumber that takes in a new number named newNumber as a parameter that has type Int and updates myNumber to be newNumber
+Add a script that reads myNumber from the contract
+
+<img width="1220" alt="image" src="https://user-images.githubusercontent.com/22729328/173421055-e315e80e-f23f-44f7-b2db-db2262dbb2e3.png">
+<img width="1220" alt="image" src="https://user-images.githubusercontent.com/22729328/173421226-38d8c946-9bed-4ddd-8701-39800cc0901c.png">
+
+Add a transaction that takes in a parameter named myNewNumber and passes it into the updateMyNumber function. Verify that your number changed by running the script again.
+
+<img width="1220" alt="image" src="https://user-images.githubusercontent.com/22729328/173421322-8afce685-fb53-413c-bd41-214b7edf8b90.png">
+<img width="1220" alt="image" src="https://user-images.githubusercontent.com/22729328/173421384-ea30f2cf-eb9d-475a-a7d4-38ef642aa1f6.png">
+
+
