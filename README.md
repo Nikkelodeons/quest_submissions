@@ -65,6 +65,38 @@ Add a transaction that takes in a parameter named myNewNumber and passes it into
 
 
 ## Chapter 2 - Day 3
+In a script, initialize an array (that has length == 3) of your favourite people, represented as Strings, and log it.
+![image](https://user-images.githubusercontent.com/22729328/174155297-e6486f56-9f08-4fd8-9011-33a47a59c4fa.png)
+
+In a script, initialize a dictionary that maps the Strings Facebook, Instagram, Twitter, YouTube, Reddit, and LinkedIn to a UInt64 that represents the order in which you use them from most to least. For example, YouTube --> 1, Reddit --> 2, etc. If you've never used one before, map it to 0!
+![image](https://user-images.githubusercontent.com/22729328/174154924-82014a79-5aa2-41d0-8b88-ee45386c2df5.png)
+
+Explain what the force unwrap operator ! does, with an example different from the one I showed you (you can just change the type).
+Given an optional type can be either a datatype or a nil, the force unwrap declares whether the variable is in fact the datatype or the nil, ie:
+
+pub fun main(): String {                                                // return type is expected to be a String
+  var sampleDict: {String: String} = {"Mary": "J", "Biggie": "Smalls"}
+  return sampleDict["Mary"]!                                            //without !, the return type would be String?
+}
+
+Using this picture below, explain...
+
+What the error message means: The expected return type is a String.  An optional was returned instead
+Why we're getting this error: Dictionaries return optionals by default.  Therefore the return type should be an optional or the element returned should be forced unwrapped to reveal a String
+
+How to fix it:
+Option 1: 
+pub fun main(): String? {
+  let thing: {Address: String} = {0x01: "One", 0x02: "Two", 0x03: "Three"}
+  return thing[0x03]
+}
+  
+Option 2:
+pub fun main(): String {
+  let thing: {Address: String} = {0x01: "One", 0x02: "Two", 0x03: "Three"}
+  return thing[0x03]!
+}
+
 ## Chapter 2 - Day 4
 
 ## Chapter 3 - Day 1
