@@ -74,10 +74,12 @@ In a script, initialize a dictionary that maps the Strings Facebook, Instagram, 
 Explain what the force unwrap operator ! does, with an example different from the one I showed you (you can just change the type).
 Given an optional type can be either a datatype or a nil, the force unwrap declares whether the variable is in fact the datatype or the nil, ie:
 
+```
 pub fun main(): String {                                                // return type is expected to be a String
   var sampleDict: {String: String} = {"Mary": "J", "Biggie": "Smalls"}
   return sampleDict["Mary"]!                                            //without !, the return type would be String?
 }
+```
 
 Using this picture below, explain...
 
@@ -86,16 +88,20 @@ Why we're getting this error: Dictionaries return optionals by default.  Therefo
 
 How to fix it:
 Option 1: 
+```
 pub fun main(): String? {
   let thing: {Address: String} = {0x01: "One", 0x02: "Two", 0x03: "Three"}
   return thing[0x03]
 }
-  
+```
+
 Option 2:
+```
 pub fun main(): String {
   let thing: {Address: String} = {0x01: "One", 0x02: "Two", 0x03: "Three"}
   return thing[0x03]!
 }
+```
 
 ## Chapter 2 - Day 4
 
