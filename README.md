@@ -64,3 +64,21 @@ Add a transaction that takes in a parameter named myNewNumber and passes it into
 <img width="1220" alt="image" src="https://user-images.githubusercontent.com/22729328/173421384-ea30f2cf-eb9d-475a-a7d4-38ef642aa1f6.png">
 
 
+## Chapter 2 - Day 3
+## Chapter 2 - Day 4
+
+## Chapter 3 - Day 1
+## Chapter 3 - Day 2
+## Chapter 3 - Day 3
+## Chapter 3 - Day 4
+## Chapter 3 - Day 5
+
+## Chapter 4 - Day 1
+## Chapter 4 - Day 2
+## Chapter 4 - Day 3
+## Chapter 4 - Day 4
+
+## Chapter 5 - Day 1
+## Chapter 5 - Day 2
+## Chapter 5 - Day 3
+
