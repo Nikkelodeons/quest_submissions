@@ -83,25 +83,27 @@ pub fun main(): String {                                                // retur
 
 Using this picture below, explain...
 
-What the error message means: The expected return type is a String.  An optional was returned instead
-Why we're getting this error: Dictionaries return optionals by default.  Therefore the return type should be an optional or the element returned should be forced unwrapped to reveal a String
+- What the error message means: 
+  - The expected return type is a String.  An optional was returned instead
+- Why we're getting this error: 
+  - Dictionaries return optionals by default.  Therefore the return type should be an optional or the element returned should be forced unwrapped to reveal a String
+- How to fix it:
 
-How to fix it:
-Option 1: 
-```
-pub fun main(): String? {
-  let thing: {Address: String} = {0x01: "One", 0x02: "Two", 0x03: "Three"}
-  return thing[0x03]
-}
-```
+  - Option 1: 
+    ```
+    pub fun main(): String? {
+      let thing: {Address: String} = {0x01: "One", 0x02: "Two", 0x03: "Three"}
+      return thing[0x03]
+    }
+    ```
 
-Option 2:
-```
-pub fun main(): String {
-  let thing: {Address: String} = {0x01: "One", 0x02: "Two", 0x03: "Three"}
-  return thing[0x03]!
-}
-```
+  - Option 2:
+    ```
+    pub fun main(): String {
+      let thing: {Address: String} = {0x01: "One", 0x02: "Two", 0x03: "Three"}
+      return thing[0x03]!
+    }
+    ```
 
 ## Chapter 2 - Day 4
 
