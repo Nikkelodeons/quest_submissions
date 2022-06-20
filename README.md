@@ -122,6 +122,56 @@ Add a script to read the Struct you defined.
 
 
 ## Chapter 3 - Day 1
+1. In words, list 3 reasons why structs are different from resources.
+  - Structs can be copied.  Resources cannot be copied
+  - Structs can be overwritten.  Resources cannot be overwritten
+  - Structs can be created whenever you want.  Resources cannot be created whenever you want.
+
+2. Describe a situation where a resource might be better to use than a struct.
+  - NFTs are meant to be unique therefore resources can accommodate this attribute since they cannot be copied.
+
+3. What is the keyword to make a new resource?
+  - create
+
+4. Can a resource be created in a script or transaction (assuming there isn't a public function to create one)?
+  - No.  Resources can only be created via the "create" keyword which can only be used inside a contract
+
+5. What is the type of the resource below?
+
+pub resource Jacob {
+
+}
+  - type is Jacob
+
+6. Let's play the "I Spy" game from when we were kids. I Spy 4 things wrong with this code. Please fix them.
+pub contract Test {
+
+    // Hint: There's nothing wrong here ;)
+    pub resource Jacob {
+        pub let rocks: Bool
+        init() {
+            self.rocks = true
+        }
+    }
+
+    /* WRONG
+    pub fun createJacob(): Jacob { // there is 1 here
+        let myJacob = Jacob() // there are 2 here
+        /*
+        answer: Should be 
+         let myJacob: @Jacob()
+        */
+        return myJacob // there is 1 here
+    }
+    */
+        
+    //CORRECT
+    pub fun createJacob(): @Jacob{
+        let myJacob: @Jacob <- create Jacob()
+        
+       return <- myJacob
+    }
+}
 ## Chapter 3 - Day 2
 ## Chapter 3 - Day 3
 ## Chapter 3 - Day 4
