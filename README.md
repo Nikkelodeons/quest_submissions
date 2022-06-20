@@ -173,6 +173,67 @@ pub contract Test {
     }
 }
 ## Chapter 3 - Day 2
+/*Write your own smart contract that contains:
+- Two state variables: 
+    - An array of resources 
+    - A dictionary of resources. 
+- Fcn to remove each of them
+- Fcn to add to each of them. 
+*/
+
+pub contract Recipes {
+
+    pub var arrayOfRecipes: @[SavoryRecipe]
+    pub var dictionaryOfRecipes: @{String: SweetRecipe} 
+
+    pub resource SavoryRecipe {
+        pub let name: String
+        pub let prep_time: Int
+        pub let cook_time: Int
+        init() {
+            self.name = "Something Savory"
+            self.prep_time = 10
+            self.cook_time = 30
+        }
+    }
+
+    pub resource SweetRecipe {
+        pub let name: String
+        pub let prep_time: Int
+        pub let cook_time: Int
+        init() {
+            self.name = "Something Sweet"
+            self.prep_time = 10
+            self.cook_time = 5
+        }
+    }
+  
+    pub fun addSavoryRecipe(recipe: @SavoryRecipe) {
+        self.arrayOfRecipes.append(<- recipe)
+    }
+
+    pub fun removeSavoryRecipe(index: Int): @SavoryRecipe {
+        return <- self.arrayOfRecipes.remove(at: index)
+    }
+
+    pub fun addSweetRecipe(recipe: @SweetRecipe) {
+        let key = recipe.name
+        
+        let oldRecipe <- self.dictionaryOfRecipes[key] <- recipe
+        destroy oldRecipe
+    }
+
+    pub fun removeSweetRecipe(key: String): @SweetRecipe {
+        let recipe <- self.dictionaryOfRecipes.remove(key: key) ?? panic("Could not find the recipe!")
+        return <- recipe
+    }
+
+    init() {
+        self.arrayOfRecipes <- []
+        self.dictionaryOfRecipes <- {}
+    }
+
+}
 ## Chapter 3 - Day 3
 ## Chapter 3 - Day 4
 ## Chapter 3 - Day 5
