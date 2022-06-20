@@ -107,6 +107,17 @@ Using this picture below, explain...
 
 ## Chapter 2 - Day 4
 
+Deploy a new contract that has a Struct of your choosing inside of it (must be different than Profile).
+
+Create a dictionary or array that contains the Struct you defined.
+
+Create a function to add to that array/dictionary.
+
+Add a transaction to call that function in step 3.
+
+Add a script to read the Struct you defined.
+
+
 ## Chapter 3 - Day 1
 ## Chapter 3 - Day 2
 ## Chapter 3 - Day 3
