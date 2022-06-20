@@ -108,14 +108,17 @@ Using this picture below, explain...
 ## Chapter 2 - Day 4
 
 Deploy a new contract that has a Struct of your choosing inside of it (must be different than Profile).
+![image](https://user-images.githubusercontent.com/22729328/174684056-8cf96b20-c8b0-41f3-a1f1-6b130237bc1d.png)
 
-Create a dictionary or array that contains the Struct you defined.
-
-Create a function to add to that array/dictionary.
+Create a dictionary or array that contains the Struct you defined + Create a function to add to that array/dictionary.
+![image](https://user-images.githubusercontent.com/22729328/174684888-5c22fad3-511a-4477-8977-d81080fa61f1.png)
 
 Add a transaction to call that function in step 3.
+![image](https://user-images.githubusercontent.com/22729328/174685121-1decb5f8-5c4d-4b16-995d-49d56627f5eb.png)
 
 Add a script to read the Struct you defined.
+![image](https://user-images.githubusercontent.com/22729328/174685913-b82c993b-19d6-4825-8629-af80b79bc78f.png)
+
 
 
 ## Chapter 3 - Day 1
