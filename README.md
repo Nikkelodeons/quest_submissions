@@ -408,6 +408,9 @@ Write your own smart contract that contains:
     ```
 
 ## Chapter 3 - Day 5
+
+For today's quest, you will be looking at a contract and a script. You will be looking at 4 variables (a, b, c, d) and 3 functions (publicFunc, contractFunc, privateFunc) defined in SomeContract. In each AREA (1, 2, 3, and 4), I want you to do the following: for each variable (a, b, c, and d), tell me in which areas they can be read (read scope) and which areas they can be modified (write scope). For each function (publicFunc, contractFunc, and privateFunc), simply tell me where they can be called.
+
 ```
     access(all) contract SomeContract {
         pub var testStruct: SomeStruct
