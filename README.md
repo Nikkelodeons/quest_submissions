@@ -580,24 +580,24 @@ This is a script that imports the contract above:
 6. Define a contract that returns a resource that has at least 1 field in it. 
     
     ```
-    pub contract Recipes {
+      pub contract Recipes {
 
-      pub resource Recipe {
-          pub let name: String
-          pub let prep_time: Int
-          pub let cook_time: Int
-          init( _name: String, _prep_time: Int, _cook_time: Int) {
-              self.name = _name
-              self.prep_time = _prep_time
-              self.cook_time = _cook_time
+          pub resource Recipe {
+              pub let name: String
+              pub let prep_time: Int
+              pub let cook_time: Int
+              init( _name: String, _prep_time: Int, _cook_time: Int) {
+                  self.name = _name
+                  self.prep_time = _prep_time
+                  self.cook_time = _cook_time
+              }
+          }
+
+          pub fun createRecipe(): @Recipe{
+              let myRecipe: @Recipe <- create Recipe(_name:"Eggplant Parm", _prep_time: 10, _cook_time: 40)
+              return <- myRecipe
           }
       }
-
-      pub fun createRecipe(): @Recipe{
-          let myRecipe: @Recipe <- create Recipe(_name:"Eggplant Parm", _prep_time: 10, _cook_time: 40)
-          return <- myRecipe
-      }
-    }
     ```
 
    Then, write 2 transactions:
@@ -606,33 +606,33 @@ This is a script that imports the contract above:
 
           - Save resource to account storage
               ```     
-              import Receipe from 0x01
+              import Recipes from 0x01
 
               transaction {
 
-                prepare(acct: AuthAccount) {
-                  acct.save(<- Recipe.createRecipe(), to: /storage/myRecipe)
-                }
+              prepare(acct: AuthAccount) {
+                  acct.save(<- Recipes.createRecipe(), to: /storage/myRecipe)
+              }
 
-                execute {}
+              execute {}
 
               }
               ```
 
           - Loads, logs, and destroys resource from account storage
               ```     
-              import Receipe from 0x01
+              import Recipes from 0x01
 
               transaction {
 
-                prepare(acct: AuthAccount) {
+              prepare(acct: AuthAccount) {
                   let myRecipe <- acct.load<@Recipes.Recipe>(from: /storage/myRecipe)!
 
-                  log(myRecipe.recipe)
+                  log(myRecipe.name)
                   destroy myRecipe
-                }
+              }
 
-                execute {}
+              execute {}
 
               }
               ```
@@ -641,32 +641,32 @@ This is a script that imports the contract above:
 
           - Save resource to account storage
               ```     
-              import Receipe from 0x01
+              import Recipes from 0x01
 
               transaction {
 
-                prepare(acct: AuthAccount) {
-                  acct.save(<- Recipes.createRecipe(), to: /storage/mOtherRecipe)
-                }
+              prepare(acct: AuthAccount) {
+                  acct.save(<- Recipes.createRecipe(), to: /storage/myRecipe)
+              }
 
-                execute {}
+              execute {}
 
               }
               ```
 
           - Borrows and logs resource from account storage
               ```     
-              import Receipe from 0x01
+              import Recipes from 0x01
 
               transaction {
 
-                prepare(acct: AuthAccount) {
-                  let myRecipe = acct.borrow<&Recipes.Recipe>(from: /storage/myOtherRecipe) ?? panic("Could not borrow recipe")
+              prepare(acct: AuthAccount) {
+                  let myRecipe = acct.borrow<&Recipes.Recipe>(from: /storage/myRecipe) ?? panic("Could not borrow recipe")
 
-                  log(myRecipe.recipe)
-                }
+                  log(myRecipe.name)
+              }
 
-                execute {}
+              execute {}
 
               }
               ```
