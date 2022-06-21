@@ -373,7 +373,7 @@ Write your own smart contract that contains:
 
 3. How would we fix this code?
     ```
-      pub contract Stuff {
+    pub contract Stuff {
 
         pub struct interface ITest {
           pub var greeting: String
@@ -385,7 +385,7 @@ Write your own smart contract that contains:
         // to structure interface Stuff.ITest`
         pub struct Test: ITest {
           pub var greeting: String
-          pub var favouriteFruit: String
+          pub var favouriteFruit: String //Add favouriteFruit here
 
           pub fun changeGreeting(newGreeting: String): String {
             self.greeting = newGreeting
@@ -394,17 +394,17 @@ Write your own smart contract that contains:
 
           init() {
             self.greeting = "Hello!"
-            self.favouriteFruit = "Apple"
+            self.favouriteFruit = "Apple" //Initialize favouriteFruit here
           }
         }
 
         pub fun fixThis() {
           //let test: Test{ITest} = Test()
-          let test: Test = Test()
+          let test: Test = Test()  //Remove interface restriction
           let newGreeting = test.changeGreeting(newGreeting: "Bonjour!") // ERROR HERE: `member of restricted type is not accessible: changeGreeting`
           log(newGreeting)
         }
-      }
+    }
     ```
 
 ## Chapter 3 - Day 5
