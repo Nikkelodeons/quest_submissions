@@ -232,6 +232,7 @@ pub contract Recipes {
 2. Create a script that reads information from that resource using the reference from the function you defined in part 1.
 
 3. Explain, in your own words, why references can be useful in Cadence.
+  - References are a convenient way to access resources without having to move them around
 
 
 ## Chapter 3 - Day 4
