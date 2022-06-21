@@ -146,13 +146,65 @@ pub contract Recipes {
 ```
 
 Create a function to add to that array/dictionary.
-![image](https://user-images.githubusercontent.com/22729328/174684888-5c22fad3-511a-4477-8977-d81080fa61f1.png)
+```
+pub contract Recipes {
+
+    pub var recipeDict: {String: Recipe}
+
+    pub struct Recipe{
+
+        pub let name: String
+        pub let diet: String
+        pub let prep_time: Int
+        pub let cook_time: Int
+
+        init(_name: String, _diet: String, _prep_time: Int, _cook_time: Int){
+            self.name = _name
+            self.diet = _diet
+            self.prep_time = _prep_time
+            self.cook_time = _cook_time
+        }
+    }
+
+    pub fun addRecipe(name: String, diet: String, prep_time: Int, cook_time: Int){
+        let newRecipe = Recipe(_name: name,
+                               _diet: diet,
+                               _prep_time: prep_time,
+                               _cook_time: cook_time)
+
+        self.recipeDict[name] = newRecipe
+
+    }
+
+    init() {
+        var recipe = Recipe(_name: "eggplant parm", 
+                            _diet: "vegetarian",
+                            _prep_time: 20,
+                            _cook_time: 40)
+        self.recipeDict = {}
+        self.recipeDict[recipe.name] = recipe
+    }
+
+
+}
+```
 
 Add a transaction to call that function in step 3.
-![image](https://user-images.githubusercontent.com/22729328/174685121-1decb5f8-5c4d-4b16-995d-49d56627f5eb.png)
+```
+import Recipes from 0x01
+
+transaction(name:String, diet: String, prep_time: Int, cook_time: Int){
+
+    prepare(signer: AuthAccount) {}
+
+    execute {
+        Recipes.addRecipe(name:name, diet:diet, prep_time: prep_time, cook_time:cook_time)
+    }
+}
+```
 
 Add a script to read the Struct you defined.
-![image](https://user-images.githubusercontent.com/22729328/174685913-b82c993b-19d6-4825-8629-af80b79bc78f.png)
+![image](https://user-images.githubusercontent.com/22729328/174704925-50dc7a4c-c72e-4a0e-b323-d9fc2d4dbb2c.png)
 
 
 
@@ -222,13 +274,13 @@ pub contract Recipes {
     pub var recipeDict: @{String: SavoryRecipe} 
 
     pub resource SavoryRecipe {
-        pub let name: String
-        pub let prep_time: Int
-        pub let cook_time: Int
+        pub let _name: String
+        pub let _prep_time: Int
+        pub let _cook_time: Int
         init() {
-            self.name = "Something Savory"
-            self.prep_time = 10
-            self.cook_time = 30
+            self.name = _name
+            self.prep_time = _prep_time
+            self.cook_time = _cook_time
         }
     }
   
