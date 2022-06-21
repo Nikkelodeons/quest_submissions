@@ -737,6 +737,8 @@ This is a script that imports the contract above:
 ## Chapter 4 - Day 3
 
 1. Why did we add a Collection to this contract? List the two main reasons.
+    -  Allows us to store multiple NFTs in a Collection which is then stored in a single storage path.  Without a collection, you can only store 1 NFT per storage path 
+    -  Allows others to give us NFTs
 
 2. What do you have to do if you have resources "nested" inside of another resource? ("Nested resources")
 
