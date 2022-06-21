@@ -442,18 +442,22 @@ For today's quest, you will be looking at a contract and a script. You will be l
                 
                 /*
                 Read: 
-                [Var] - a, b, c, d
-                [Fcn] - 
-                    - publicFunc()
-                    - contractFunc()
-                    - privateFunc()
-                    
+                [Var] - a
+                [Var] - b
+                [Var] - c
+                [Var] - d
+                
                 Modified:
-                [Var] - a, b, c, d
-                [Fcn] -
-                    - publicFunc()
-                    - contractFunc()
-                    - privateFunc()
+                [Var] - a
+                [Var] - b
+                [Var] - c
+                [Var] - d
+                
+                Access Scope:
+                [Fcn] - publicFunc()
+                [Fcn] - contractFunc()
+                [Fcn] - privateFunc()
+
              */
             }
 
@@ -475,18 +479,17 @@ For today's quest, you will be looking at a contract and a script. You will be l
                 
                 /*
                 Read: 
-                [Var] - a, b, c, d
-                [Fcn] - 
-                    - publicFunc()
-                    - contractFunc()
-                    - privateFunc()
-                    
+                [Var] - a
+                [Var] - b
+                [Var] - c
+                
                 Modified:
-                [Var] - a, b, c, d
-                [Fcn] -
-                    - publicFunc()
-                    - contractFunc()
-                    - privateFunc()
+                [Var] - a
+
+                Access Scope:
+                [Fcn] - publicFunc()
+                [Fcn] - contractFunc()
+
              */
             }
 
@@ -506,18 +509,17 @@ For today's quest, you will be looking at a contract and a script. You will be l
             
             /*
                 Read: 
-                [Var] - a, b, c, d
-                [Fcn] - 
-                    - publicFunc()
-                    - contractFunc()
-                    - privateFunc()
-                    
+                [Var] - a
+                [Var] - b
+                [Var] - c
+                
                 Modified:
-                [Var] - a, b, c, d
-                [Fcn] -
-                    - publicFunc()
-                    - contractFunc()
-                    - privateFunc()
+                [Var] - a
+
+                Access Scope:
+                [Fcn] - publicFunc()
+                [Fcn] - contractFunc()
+
              */
         }
 
@@ -538,20 +540,17 @@ This is a script that imports the contract above:
       /**************/
       
       /*
-      Read: 
-      [Var] - a, b, c, d
-      [Fcn] - 
-          - publicFunc()
-          - contractFunc()
-          - privateFunc()
+        Read: 
+        [Var] - a
+        [Var] - b
+        
+        Modified:
+        [Var] - a
 
-      Modified:
-      [Var] - a, b, c, d
-      [Fcn] -
-          - publicFunc()
-          - contractFunc()
-          - privateFunc()
-       */
+        Access Scope:
+        [Fcn] - publicFunc()
+
+     */
       
     }
 
