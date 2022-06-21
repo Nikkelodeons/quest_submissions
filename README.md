@@ -741,6 +741,7 @@ This is a script that imports the contract above:
     -  Allows others to give us NFTs
 
 2. What do you have to do if you have resources "nested" inside of another resource? ("Nested resources")
+    - You have to add a destroy function so that when you destroy the resource you destroy all the data within
 
 3. Brainstorm some extra things we may want to add to this contract. Think about what might be problematic with this contract and how we could fix it.
 
