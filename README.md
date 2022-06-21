@@ -558,24 +558,24 @@ This is a script that imports the contract above:
 
 ## Chapter 4 - Day 1
 1. Explain what lives inside of an account.
-  - Contract code and all of your data (account storage) lives inside an account
+    - Contract code and all of your data (account storage) lives inside an account
 
 2. What is the difference between the /storage/, /public/, and /private/ paths?
-  - They have difference access level. 
-  - /storage is only accessible to account owner
-  - /public is accessible to anyone
-  - /private is accessible to account owner and those owner gives access to
+    - They have difference access level. 
+    - /storage is only accessible to account owner
+    - /public is accessible to anyone
+    - /private is accessible to account owner and those owner gives access to
 
 3. What does .save() do? What does .load() do? What does .borrow() do?
-  - .save() saves data to account storage
-  - .load() takes data out of account storage
-  - .borrow() gets a reference to resource in storage in order to simply look at it
+    - .save() saves data to account storage
+    - .load() takes data out of account storage
+    - .borrow() gets a reference to resource in storage in order to simply look at it
 
 4. Explain why we couldn't save something to our account storage inside of a script.
-  - account storage is not accessible from a script but from the prepare stage in a transaction
+    - account storage is not accessible from a script but from the prepare stage in a transaction
 
 5. Explain why I couldn't save something to your account.
-  - data is saved to /storage and /storage is only accessible to the account owner
+    - data is saved to /storage and /storage is only accessible to the account owner
 
 6. Define a contract that returns a resource that has at least 1 field in it. Then, write 2 transactions:
 
