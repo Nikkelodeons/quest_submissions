@@ -422,11 +422,8 @@ For today's quest, you will be looking at a contract and a script. You will be l
             //
 
             pub(set) var a: String
-
             pub var b: String
-
             access(contract) var c: String
-
             access(self) var d: String
 
             //
@@ -434,9 +431,7 @@ For today's quest, you will be looking at a contract and a script. You will be l
             //
 
             pub fun publicFunc() {}
-
             access(contract) fun contractFunc() {}
-
             access(self) fun privateFunc() {}
 
 
@@ -444,13 +439,29 @@ For today's quest, you will be looking at a contract and a script. You will be l
                 /**************/
                 /*** AREA 1 ***/
                 /**************/
+                
+                /*
+                Read: 
+                [Var] - a, b, c, d
+                [Fcn] - 
+                    - publicFunc()
+                    - contractFunc()
+                    - privateFunc()
+                    
+                Modified:
+                [Var] - a, b, c, d
+                [Fcn] -
+                    - publicFunc()
+                    - contractFunc()
+                    - privateFunc()
+             */
             }
 
             init() {
-                self.a = "a" //Can be both read and modified from anywhere in the contract, transaction, and script
-                self.b = "b" //Can be read from anywhere in the contract, transaction and script.  Write scope limited to inner scope where it is defined
-                self.c = "c" //Read scope limited to anywhere in the contract it is defined .  Write scope limited to inner scope where it is defined
-                self.d = "d" // Both read and write scope are limited to scope where it is defined
+                self.a = "a"
+                self.b = "b"
+                self.c = "c"
+                self.d = "d"
             }
         }
 
@@ -461,6 +472,22 @@ For today's quest, you will be looking at a contract and a script. You will be l
                 /**************/
                 /*** AREA 2 ***/
                 /**************/
+                
+                /*
+                Read: 
+                [Var] - a, b, c, d
+                [Fcn] - 
+                    - publicFunc()
+                    - contractFunc()
+                    - privateFunc()
+                    
+                Modified:
+                [Var] - a, b, c, d
+                [Fcn] -
+                    - publicFunc()
+                    - contractFunc()
+                    - privateFunc()
+             */
             }
 
             init() {
@@ -476,6 +503,22 @@ For today's quest, you will be looking at a contract and a script. You will be l
             /**************/
             /*** AREA 3 ****/
             /**************/
+            
+            /*
+                Read: 
+                [Var] - a, b, c, d
+                [Fcn] - 
+                    - publicFunc()
+                    - contractFunc()
+                    - privateFunc()
+                    
+                Modified:
+                [Var] - a, b, c, d
+                [Fcn] -
+                    - publicFunc()
+                    - contractFunc()
+                    - privateFunc()
+             */
         }
 
         init() {
@@ -486,16 +529,33 @@ For today's quest, you will be looking at a contract and a script. You will be l
 
 This is a script that imports the contract above:
 
-    ```
+ ```
     import SomeContract from 0x01
 
     pub fun main() {
       /**************/
       /*** AREA 4 ***/
       /**************/
+      
+      /*
+      Read: 
+      [Var] - a, b, c, d
+      [Fcn] - 
+          - publicFunc()
+          - contractFunc()
+          - privateFunc()
+
+      Modified:
+      [Var] - a, b, c, d
+      [Fcn] -
+          - publicFunc()
+          - contractFunc()
+          - privateFunc()
+       */
+      
     }
 
-    ```
+ ```
 
 ## Chapter 4 - Day 1
 ## Chapter 4 - Day 2
