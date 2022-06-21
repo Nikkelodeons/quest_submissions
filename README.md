@@ -183,8 +183,8 @@ Write your own smart contract that contains:
 ```
 pub contract Recipes {
 
-    pub var arrayOfRecipes: @[SavoryRecipe]
-    pub var dictionaryOfRecipes: @{String: SavoryRecipe} 
+    pub var recipeArray: @[SavoryRecipe]
+    pub var recipeDict: @{String: SavoryRecipe} 
 
     pub resource SavoryRecipe {
         pub let name: String
@@ -198,28 +198,28 @@ pub contract Recipes {
     }
   
     pub fun addRecipeToArray(recipe: @SavoryRecipe) {
-        self.arrayOfRecipes.append(<- recipe)
+        self.recipeArray.append(<- recipe)
     }
 
     pub fun addRecipeToDict(recipe: @SavoryRecipe) {
         let key = recipe.name
         
-        let oldRecipe <- self.dictionaryOfRecipes[key] <- recipe
+        let oldRecipe <- self.recipeDict[key] <- recipe
         destroy oldRecipe
     }
 
     pub fun removeRecipeFromArray(index: Int): @SavoryRecipe {
-        return <- self.arrayOfRecipes.remove(at: index)
+        return <- self.recipeArray.remove(at: index)
     }
     
     pub fun removeRecipeFromDict(key: String): @SavoryRecipe {
-        let recipe <- self.dictionaryOfRecipes.remove(key: key) ?? panic("Could not find the recipe!")
+        let recipe <- self.recipeDict.remove(key: key)!
         return <- recipe
     }
 
     init() {
-        self.arrayOfRecipes <- []
-        self.dictionaryOfRecipes <- {}
+        self.recipeArray <- []
+        self.recipeDict <- {}
     }
 
 }
