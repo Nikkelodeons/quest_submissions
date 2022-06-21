@@ -581,8 +581,73 @@ This is a script that imports the contract above:
 
   - i. A transaction that first saves the resource to account storage, then loads it out of account storage, logs a field inside the resource, and destroys it.
 
+      - Save resource to account storage
+      ```     
+      import Receipe from 0x01
+      
+      transaction {
+        
+        prepare(acct: AuthAccount) {
+          acct.save(<- Recipe.createRecipe(), to: /storage/myRecipe)
+        }
+        
+        execute {}
+      
+      }
+      ```
+      
+      - Loads, logs, and destroys resource from account storage
+      ```     
+      import Receipe from 0x01
+      
+      transaction {
+        
+        prepare(acct: AuthAccount) {
+          let myRecipe <- acct.load<@Recipes.Recipe>(from: /storage/myRecipe)!
+          
+          log(myRecipe.recipe)
+          destroy myRecipe
+        }
+        
+        execute {}
+      
+      }
+      ```
+
   - ii. A transaction that first saves the resource to account storage, then borrows a reference to it, and logs a field inside the resource.
-  
+
+      - Save resource to account storage
+      ```     
+      import Receipe from 0x01
+      
+      transaction {
+        
+        prepare(acct: AuthAccount) {
+          acct.save(<- Recipes.createRecipe(), to: /storage/mOtherRecipe)
+        }
+        
+        execute {}
+      
+      }
+      ```
+      
+      - Borrows and logs resource from account storage
+      ```     
+      import Receipe from 0x01
+      
+      transaction {
+        
+        prepare(acct: AuthAccount) {
+          let myRecipe = acct.borrow<&Recipes.Recipe>(from: /storage/myOtherRecipe) ?? panic("Could not borrow recipe")
+          
+          log(myRecipe.recipe)
+        }
+        
+        execute {}
+      
+      }
+      ```
+      
 ## Chapter 4 - Day 2
 ## Chapter 4 - Day 3
 ## Chapter 4 - Day 4
