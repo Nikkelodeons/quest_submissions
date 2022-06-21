@@ -315,8 +315,45 @@ Write your own smart contract that contains:
 ## Chapter 3 - Day 3
 1. Define your own contract that stores a dictionary of resources. Add a function to get a reference to one of the resources in the dictionary.
 
+  ```
+  pub contract Recipes {
+
+    pub var recipeDict: @{String: Recipe} 
+
+    pub resource Recipe {
+        pub let name: String
+        pub let prep_time: Int
+        pub let cook_time: Int
+        init( _name: String, _prep_time: Int, _cook_time: Int) {
+            self.name = _name
+            self.prep_time = _prep_time
+            self.cook_time = _cook_time
+        }
+    }
+
+    pub fun getReference(key: String): &Recipe {
+        return (&self.recipeDict[key] as &Recipe?)!
+    }
+
+    init() {
+        self.recipeDict <- {
+            "Eggplant Parm": <- create Recipe(_name:"Eggplant Parm", _prep_time: 30, _cook_time: 50),
+            "Manicotti": <- create Recipe(_name: "Manicotti", _prep_time: 20, _cook_time: 60)
+        }
+    }
+  }
+  ```
+
 2. Create a script that reads information from that resource using the reference from the function you defined in part 1.
 
+  ```
+  import Recipes from 0x01
+
+  pub fun main(): Int {
+    let ref = Recipes.getReference(key: "Manicotti")
+    return ref.cook_time
+  }
+  ```
 3. Explain, in your own words, why references can be useful in Cadence.
   - References are a convenient way to access resources without having to move them around
 
