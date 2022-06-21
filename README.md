@@ -673,13 +673,15 @@ This is a script that imports the contract above:
       
 ## Chapter 4 - Day 2
 
-What does .link() do?
+1. What does .link() do?
+    - .link() takes what's in storage and makes it publically available
 
-1. In your own words (no code), explain how we can use resource interfaces to only expose certain things to the /public/ path.
+2. In your own words (no code), explain how we can use resource interfaces to only expose certain things to the /public/ path.
+    - When you link a reference to a resource, you can specify the interface it implements, which only allows access to data in that interface regardless of all that data in the resource.  This is the only data that will be exposed publically
 
-2. Deploy a contract that contains a resource that implements a resource interface. Then, do the following:
+3. Deploy a contract that contains a resource that implements a resource interface. Then, do the following:
 
-3. In a transaction, save the resource to storage and link it to the public with the restrictive interface.
+      - In a transaction, save the resource to storage and link it to the public with the restrictive interface.
 
       - Run a script that tries to access a non-exposed field in the resource interface, and see the error pop up.
 
