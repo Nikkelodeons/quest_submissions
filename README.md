@@ -212,10 +212,6 @@ pub contract Recipes {
         self.arrayOfRecipes.append(<- recipe)
     }
 
-    pub fun removeSavoryRecipe(index: Int): @SavoryRecipe {
-        return <- self.arrayOfRecipes.remove(at: index)
-    }
-
     pub fun addSweetRecipe(recipe: @SweetRecipe) {
         let key = recipe.name
         
@@ -223,6 +219,10 @@ pub contract Recipes {
         destroy oldRecipe
     }
 
+    pub fun removeSavoryRecipe(index: Int): @SavoryRecipe {
+        return <- self.arrayOfRecipes.remove(at: index)
+    }
+    
     pub fun removeSweetRecipe(key: String): @SweetRecipe {
         let recipe <- self.dictionaryOfRecipes.remove(key: key) ?? panic("Could not find the recipe!")
         return <- recipe
