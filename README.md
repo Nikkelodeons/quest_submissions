@@ -681,11 +681,57 @@ This is a script that imports the contract above:
 
 3. Deploy a contract that contains a resource that implements a resource interface. Then, do the following:
 
+      ```
+        pub contract Recipes {
+
+            pub resource interface IRecipe{
+                pub let name: String
+            }
+
+            pub resource Recipe: IRecipe {
+                pub let name: String
+                pub let prep_time: Int
+                pub let cook_time: Int
+                init() {
+                    self.name = "Eggplant Parm"
+                    self.prep_time = 10
+                    self.cook_time = 40
+                }
+            }
+
+            pub fun createRecipe(): @Recipe{
+                return <- create Recipe()
+            }
+        }
+      ```
+
       - In a transaction, save the resource to storage and link it to the public with the restrictive interface.
 
+          ```
+            import Recipes from 0x01
+
+            transaction {
+
+              prepare(acct: AuthAccount) {
+                  //save
+                  acct.save(<- Recipes.createRecipe(), to: /storage/myRecipe)
+
+                  //link
+                  acct.link<&Recipes.Recipe{Recipes.IRecipe}>(/public/MyRecipePublic, target:/storage/myRecipe)
+              }
+
+              execute {}
+
+            } 
+          ```
+
       - Run a script that tries to access a non-exposed field in the resource interface, and see the error pop up.
+          ![image](https://user-images.githubusercontent.com/22729328/174836010-4968a048-e905-470a-aad2-3f05ecc74f46.png)
+
 
       - Run the script and access something you CAN read from. Return it from the script.
+          ![image](https://user-images.githubusercontent.com/22729328/174836206-a269522b-f317-4f75-99c1-eaf0e951d3ba.png)
+
 
 
 ## Chapter 4 - Day 3
