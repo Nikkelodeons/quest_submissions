@@ -266,50 +266,50 @@ Write your own smart contract that contains:
 - Fcn to remove each of them
 - Fcn to add to each of them. 
 
-```
-pub contract Recipes {
+    ```
+    pub contract Recipes {
 
-    pub var recipeArray: @[SavoryRecipe]
-    pub var recipeDict: @{String: SavoryRecipe} 
+        pub var recipeArray: @[Recipe]
+        pub var recipeDict: @{String: Recipe} 
 
-    pub resource SavoryRecipe {
-        pub let _name: String
-        pub let _prep_time: Int
-        pub let _cook_time: Int
-        init() {
-            self.name = _name
-            self.prep_time = _prep_time
-            self.cook_time = _cook_time
+        pub resource Recipe {
+            pub let name: String
+            pub let prep_time: Int
+            pub let cook_time: Int
+            init() {
+                self.name = "Eggplant Parm"
+                self.prep_time = 20
+                self.cook_time = 50
+            }
         }
-    }
-  
-    pub fun addRecipeToArray(recipe: @SavoryRecipe) {
-        self.recipeArray.append(<- recipe)
-    }
 
-    pub fun addRecipeToDict(recipe: @SavoryRecipe) {
-        let key = recipe.name
-        
-        let oldRecipe <- self.recipeDict[key] <- recipe
-        destroy oldRecipe
-    }
+        pub fun addRecipeToArray(recipe: @Recipe) {
+            self.recipeArray.append(<- recipe)
+        }
 
-    pub fun removeRecipeFromArray(index: Int): @SavoryRecipe {
-        return <- self.recipeArray.remove(at: index)
-    }
-    
-    pub fun removeRecipeFromDict(key: String): @SavoryRecipe {
-        let recipe <- self.recipeDict.remove(key: key)!
-        return <- recipe
-    }
+        pub fun addRecipeToDict(recipe: @Recipe) {
+            let key = recipe.name
 
-    init() {
-        self.recipeArray <- []
-        self.recipeDict <- {}
-    }
+            let oldRecipe <- self.recipeDict[key] <- recipe
+            destroy oldRecipe
+        }
 
-}
-```
+        pub fun removeRecipeFromArray(index: Int): @Recipe {
+            return <- self.recipeArray.remove(at: index)
+        }
+
+        pub fun removeRecipeFromDict(key: String): @Recipe {
+            let recipe <- self.recipeDict.remove(key: key)!
+            return <- recipe
+        }
+
+        init() {
+            self.recipeArray <- []
+            self.recipeDict <- {}
+        }
+
+    }
+    ```
 
 
 ## Chapter 3 - Day 3
