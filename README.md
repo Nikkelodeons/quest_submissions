@@ -112,6 +112,38 @@ Deploy a new contract that has a Struct of your choosing inside of it (must be d
 
 
 Create a dictionary or array that contains the Struct you defined
+```
+pub contract Recipes {
+
+    pub var recipeDict: {String: Recipe}
+
+    pub struct Recipe{
+
+        pub let name: String
+        pub let diet: String
+        pub let prep_time: Int
+        pub let cook_time: Int
+
+        init(_name: String, _diet: String, _prep_time: Int, _cook_time: Int){
+            self.name = _name
+            self.diet = _diet
+            self.prep_time = _prep_time
+            self.cook_time = _cook_time
+        }
+    }
+
+    init() {
+        var recipe = Recipe(_name: "eggplant parm", 
+                            _diet: "vegetarian",
+                            _prep_time: 20,
+                            _cook_time: 40)
+        self.recipeDict = {}
+        self.recipeDict[recipe.name] = recipe
+    }
+
+
+}
+```
 
 Create a function to add to that array/dictionary.
 ![image](https://user-images.githubusercontent.com/22729328/174684888-5c22fad3-511a-4477-8977-d81080fa61f1.png)
