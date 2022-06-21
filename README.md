@@ -569,9 +569,10 @@ This is a script that imports the contract above:
 
 6. Define a contract that returns a resource that has at least 1 field in it. Then, write 2 transactions:
 
-  i. A transaction that first saves the resource to account storage, then loads it out of account storage, logs a field inside the resource, and destroys it.
+  - i. A transaction that first saves the resource to account storage, then loads it out of account storage, logs a field inside the resource, and destroys it.
 
-  ii. A transaction that first saves the resource to account storage, then borrows a reference to it, and logs a field inside the resource.
+  - ii. A transaction that first saves the resource to account storage, then borrows a reference to it, and logs a field inside the resource.
+  
 ## Chapter 4 - Day 2
 ## Chapter 4 - Day 3
 ## Chapter 4 - Day 4
