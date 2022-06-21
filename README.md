@@ -228,7 +228,8 @@ Add a script to read the Struct you defined.
       pub resource Jacob {
 
       }
-        - type is Jacob
+      
+      - type is Jacob
 
 6. Let's play the "I Spy" game from when we were kids. I Spy 4 things wrong with this code. Please fix them.
       ```
