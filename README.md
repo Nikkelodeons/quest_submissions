@@ -173,14 +173,14 @@ pub contract Test {
     }
 }
 ## Chapter 3 - Day 2
-/*Write your own smart contract that contains:
+Write your own smart contract that contains:
 - Two state variables: 
     - An array of resources 
     - A dictionary of resources. 
 - Fcn to remove each of them
 - Fcn to add to each of them. 
-*/
 
+```
 pub contract Recipes {
 
     pub var arrayOfRecipes: @[SavoryRecipe]
@@ -234,6 +234,7 @@ pub contract Recipes {
     }
 
 }
+```
 ## Chapter 3 - Day 3
 ## Chapter 3 - Day 4
 ## Chapter 3 - Day 5
