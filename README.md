@@ -447,10 +447,10 @@ For today's quest, you will be looking at a contract and a script. You will be l
             }
 
             init() {
-                self.a = "a"
-                self.b = "b"
-                self.c = "c"
-                self.d = "d"
+                self.a = "a" //Can be both read and modified from anywhere in the contract, transaction, and script
+                self.b = "b" //Can be read from anywhere in the contract, transaction and script.  Write scope limited to inner scope where it is defined
+                self.c = "c" //Read scope limited to anywhere in the contract it is defined .  Write scope limited to inner scope where it is defined
+                self.d = "d" // Both read and write scope are limited to scope where it is defined
             }
         }
 
