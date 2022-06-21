@@ -355,7 +355,7 @@ Write your own smart contract that contains:
   }
   ```
 3. Explain, in your own words, why references can be useful in Cadence.
-  - References are a convenient way to access resources without having to move them around
+    - References are a convenient way to access resources without having to move them around
 
 
 ## Chapter 3 - Day 4
