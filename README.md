@@ -577,7 +577,30 @@ This is a script that imports the contract above:
 5. Explain why I couldn't save something to your account.
     - data is saved to /storage and /storage is only accessible to the account owner
 
-6. Define a contract that returns a resource that has at least 1 field in it. Then, write 2 transactions:
+6. Define a contract that returns a resource that has at least 1 field in it. 
+    
+    ```
+    pub contract Recipes {
+
+      pub resource Recipe {
+          pub let name: String
+          pub let prep_time: Int
+          pub let cook_time: Int
+          init( _name: String, _prep_time: Int, _cook_time: Int) {
+              self.name = _name
+              self.prep_time = _prep_time
+              self.cook_time = _cook_time
+          }
+      }
+
+      pub fun createRecipe(): @Recipe{
+          let myRecipe: @Recipe <- create Recipe(_name:"Eggplant Parm", _prep_time: 10, _cook_time: 40)
+          return <- myRecipe
+      }
+    }
+    ```
+
+   Then, write 2 transactions:
 
   - i. A transaction that first saves the resource to account storage, then loads it out of account storage, logs a field inside the resource, and destroys it.
 
