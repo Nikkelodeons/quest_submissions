@@ -854,6 +854,7 @@ This is a script that imports the contract above:
 ## Chapter 5 - Day 1
 
 1. Describe what an event is, and why it might be useful to a client.
+    - A method for a smart contract to send notification that something has occurred which can be convenient for clients such that they wouldn't have to constantly check the contract for changes
 
 2. Deploy a contract with an event in it, and emit the event somewhere else in the contract indicating that it happened.
 
