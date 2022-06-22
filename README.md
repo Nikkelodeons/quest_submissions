@@ -914,8 +914,10 @@ This is a script that imports the contract above:
 ## Chapter 5 - Day 2
 
 1. Explain why standards can be beneficial to the Flow ecosystem.
+    - It's convenient for both contract developers and clients because it creates a uniformity amongst certain types of contracts which prevents developers from having reinvent the wheel for each contract that is of the same type.  They won't have to implement different functions for every NFT contract.  Clients can have a singular way of interacting with multiple contracts.
 
 2. What is YOUR favourite food?
+    - Sushi
 
 3. Please fix this code (Hint: There are two things wrong):
 
@@ -944,11 +946,14 @@ This is a script that imports the contract above:
         ```
       - The implementing contract:
         ```
-          pub contract Test {
+          import ITest from 0x04 
+
+          pub contract Test: ITest {
             pub var number: Int
 
             pub fun updateNumber(newNumber: Int) {
-              self.number = 5
+              //self.number = 5
+              self.number = newNumber
             }
 
             pub resource interface IStuff {
