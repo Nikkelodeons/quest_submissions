@@ -749,6 +749,7 @@ This is a script that imports the contract above:
           - No we want to control who has the authority to mint an NFT from the contract so we can add a resource to restrict access to the createNFT function
 
       - Idea #2: If we want to read information about our NFTs inside our Collection, right now we have to take it out of the Collection to do so. Is this good?
+          - No we can add a function to read it instead, ie. borrow
 
 
 ## Chapter 4 - Day 4
@@ -784,7 +785,7 @@ This is a script that imports the contract above:
       }
     
       /* This is a Collection resource that contains the NFT resources as well as functions defined by the CollectionPublic interface 
-      Provides the user the ability to deposit, withdraw, and borrow NFTs, get NFT ids
+      Provides the user the ability to deposit, withdraw, borrow NFTs, and get NFT ids
       */
       pub resource Collection: CollectionPublic {
         pub var ownedNFTs: @{UInt64: NFT}
@@ -805,11 +806,13 @@ This is a script that imports the contract above:
         pub fun getIDs(): [UInt64] {
           return self.ownedNFTs.keys
         }
-
+        
+        // function to read NFT without having to move it out of the collection
         pub fun borrowNFT(id: UInt64): &NFT {
           return (&self.ownedNFTs[id] as &NFT?)!
         }
-
+        
+        // standard initialize this entity function
         init() {
           self.ownedNFTs <- {}
         }
@@ -833,7 +836,7 @@ This is a script that imports the contract above:
           return <- create NFT(_name: name, _favouriteFood: favouriteFood, _luckyNumber: luckyNumber)
         }
         
-        //function to 
+        //function to give admin/"Minter" access to a resource
         pub fun createMinter(): @Minter {
           return <- create Minter()
         }
