@@ -776,26 +776,32 @@ This is a script that imports the contract above:
         }
       }
 
-      // This is a resource interface that allows us to... you get the point.
+      // This is a resource interface that allows us to control what data is accessible in the Collection resource
       pub resource interface CollectionPublic {
         pub fun deposit(token: @NFT)
         pub fun getIDs(): [UInt64]
         pub fun borrowNFT(id: UInt64): &NFT
       }
-
+    
+      /* This is a Collection resource that contains the NFT resources as well as functions defined by the CollectionPublic interface 
+      Provides the user the ability to deposit, withdraw, and borrow NFTs, get NFT ids
+      */
       pub resource Collection: CollectionPublic {
         pub var ownedNFTs: @{UInt64: NFT}
 
+        //function to deposit NFT into collection at id
         pub fun deposit(token: @NFT) {
           self.ownedNFTs[token.id] <-! token
         }
-
+        
+        //function to withdraw NFT from collection by id
         pub fun withdraw(withdrawID: UInt64): @NFT {
           let nft <- self.ownedNFTs.remove(key: withdrawID) 
                   ?? panic("This NFT does not exist in this Collection.")
           return <- nft
         }
 
+        //function to return all IDs for all NFTs in collection
         pub fun getIDs(): [UInt64] {
           return self.ownedNFTs.keys
         }
@@ -807,22 +813,27 @@ This is a script that imports the contract above:
         init() {
           self.ownedNFTs <- {}
         }
-
+        
+        //function to delete/destroy all NFTs that belong to this collection
         destroy() {
           destroy self.ownedNFTs
         }
       }
 
+      // function to create an empty resource to store multiple NFT resources
       pub fun createEmptyCollection(): @Collection {
         return <- create Collection()
       }
 
+      // function to restrict ability to create and mint NFT to the owner of this contract
       pub resource Minter {
-
+        
+        //function to create NFT resource
         pub fun createNFT(name: String, favouriteFood: String, luckyNumber: Int): @NFT {
           return <- create NFT(_name: name, _favouriteFood: favouriteFood, _luckyNumber: luckyNumber)
         }
-
+        
+        //function to 
         pub fun createMinter(): @Minter {
           return <- create Minter()
         }
@@ -830,8 +841,8 @@ This is a script that imports the contract above:
       }
 
       init() {
-        self.totalSupply = 0
-        self.account.save(<- create Minter(), to: /storage/Minter)
+        self.totalSupply = 0  //initialize NFT counter to 0
+        self.account.save(<- create Minter(), to: /storage/Minter)  //saves Minter resource to contract owner's account storage
       }
     }  
   ```
