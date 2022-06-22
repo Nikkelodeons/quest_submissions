@@ -977,8 +977,10 @@ This is a script that imports the contract above:
 ## Chapter 5 - Day 3
 
 1. What does "force casting" with as! do? Why is it useful in our Collection?
+    - force casting limits the deposit of NFTs into our collection to a specified type rather than any NFT of a more generic type, @NonFungibleToken.NFT. Gives us more control over what gets deposited into our Collections.
 
 2. What does auth do? When do we use it?
+    auth downcasts a generic type to a more specific type so that if we are trying to access data that is restricted by its generic type, we can downcast the type returned from generic to specific where the data we're trying to access is not restricted.
 
 3. This last quest will be your most difficult yet. Take this contract:
 
