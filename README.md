@@ -868,6 +868,7 @@ This is a script that imports the contract above:
       // TODO
       // Tell me whether or not this function will log the name.
       // name: 'Jacob'
+      // answer: NOPE
       pub fun numberOne(name: String) {
         pre {
           name.length == 5: "This name is not cool enough."
@@ -878,6 +879,7 @@ This is a script that imports the contract above:
       // TODO
       // Tell me whether or not this function will return a value.
       // name: 'Jacob'
+      // answer: Yes
       pub fun numberTwo(name: String): String {
         pre {
           name.length >= 0: "You must input a valid name."
