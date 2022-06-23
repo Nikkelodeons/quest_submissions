@@ -969,6 +969,7 @@ This is a script that imports the contract above:
         // TODO
         // Tell me whether or not this function will log the updated number.
         // Also, tell me the value of `self.number` after it's run.
+        // Answer:  Function will not log the updated number. self.number == 1 after it's fun
         pub fun numberThree(): Int {
           post {
             before(self.number) == result + 1
