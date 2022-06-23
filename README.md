@@ -858,7 +858,80 @@ This is a script that imports the contract above:
 
 2. Deploy a contract with an event in it, and emit the event somewhere else in the contract indicating that it happened.
 
+```
+    pub contract Recipes {
+
+    //Event
+    pub event RecipeCreated(name: String)
+
+    pub resource interface IRecipe{
+        pub let name: String
+    }
+    
+    pub resource Recipe: IRecipe {
+        pub let name: String
+        pub let prep_time: Int
+        pub let cook_time: Int
+        init() {
+            self.name = "Eggplant Parm"
+            self.prep_time = 10
+            self.cook_time = 40
+        }
+    }
+
+    pub fun createRecipe(): @Recipe{
+        let recipe <- create Recipe()
+        emit RecipeCreated(name: recipe.name)
+        return <- recipe
+    }
+  }
+```
+
 3. Using the contract in step 2), add some pre conditions and post conditions to your contract to get used to writing them out.
+
+```
+    pub contract Recipes {
+
+        //Event
+        pub event RecipeCreated(name: String)
+
+        pub resource interface IRecipe{
+
+            pub let name: String
+
+            pub fun changeCookTime(newCookTime: Int){
+                pre {
+                    newCookTime > 0: "Cook time must be greater than 0"
+                }
+            }
+        }
+
+        pub resource Recipe: IRecipe {
+            pub let name: String
+            pub let prep_time: Int
+            pub var cook_time: Int
+
+            pub fun changeCookTime(newCookTime: Int){
+                post {
+                    self.cook_time != before(self.cook_time)
+                }
+                self.cook_time = newCookTime
+            }
+
+            init() {
+                self.name = "Eggplant Parm"
+                self.prep_time = 10
+                self.cook_time = 40
+            }
+        }
+
+        pub fun createRecipe(): @Recipe{
+            let recipe <- create Recipe()
+            emit RecipeCreated(name: recipe.name)
+            return <- recipe
+        }
+    }
+```
 
 4. For each of the functions below (numberOne, numberTwo, numberThree), follow the instructions.
 
